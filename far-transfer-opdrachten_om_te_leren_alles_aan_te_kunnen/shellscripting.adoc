@@ -1,0 +1,39 @@
+= Shellscripting
+Wubbo Lameijer, 20240519
+v1.0.0
+
+== Inleiding: waarom Shellscripting?
+
+Een deel van de kunst van het programmeren is het juiste gereedschap kiezen voor een probleem. Nu is overkill voor een probleem (een Java-programma schrijven om de regels tekst in een file om te keren) weliswaar meestal minder problematisch dan 'underkill' (een XML-parser maken in Excel), maar in de ideale wereld kan een developer het hele spectrum bestrijken - of tenminste weten dat er een spectrum bestaat waar je met wat inlezen en puzzelen gebruik van kan maken, en dat Java niet het enige hulpmiddel is om problemen mee op te lossen.
+
+Java is geschikt voor de meest complexe applicaties, zolang er geen bijzondere eisen worden gesteld aan runtijd of geheugengebruik of parallelisme of machines waar het op runt. Voor programma's die kleiner in scope zijn maar wel gebruiksvriendelijk moeten zijn, bestaan er low-code/no-code-oplossingen. Voor kleine tools voor eigen gebruik kan Python geschikt zijn, zeker als er goede libraries voor dat specifieke probleem in Python zijn geschreven - Python is een best handige programmeertaal zolang je het niet zelf hoeft te debuggen. Maar er zijn zeker scenarios waar ook Python overkill voor is. En dan is het goed als developer nog één stapje lager te kunnen tot het allereenvoudigste tool dat je ter beschikking hebt: command-line opdrachten en shellscripting.
+
+Elk operating system heeft een soort command prompt, bij Windows heet dat dus de command prompt (of opdrachtprompt), al heeft Windows uiteraard ook Powershell. Linux en OSX hebben ook hun shells, waarin je commando's kunt uitvoeren voor het runnen van programma's, het aanmaken, verwijderen en verplaatsen van files, en nog veel, veel meer.
+
+"Maar", zeg je misschien, "daar heb ik toch Explorer of de andere leuke GUI van mijn operating systeem toch voor"? Dat klopt. Maar vergeet niet dat ook een grafische userinterface een soort domein-specifieke taal is waarin gemakkelijke dingen erg gemakkelijk zijn, maar zeldzame of moeilijke dingen heel erg moeilijk zijn of zelfs onmogelijk. 
+
+En daarnaast zijn er zeker voor programmeurs veel tools die alleen via de command-prompt werken, en waarvoor je wel de command-prompt _moet_ gebruiken of het geluk moet hebben een ander programma te vinden dat een goede GUI biedt - en dat heb je lang niet altijd. Zelfs na uitgebreid zoeken weet ik nog steeds niet hoe je in Visual Studio ervoor kan zorgen dat een file uit een Git-repo wordt verwijderd - maar als je naar de manier zoekt waarin het via de command prompt kan, kan je het heel snel voor elkaar krijgen (git rm --cached [filename]).
+
+Als jij toevallig (zoals ik) een operating system hebt dat Java-files niet automatisch runt als je ze aanklikt, wat doe je dan? Of wat als je besluit de Google formatter vaker te gaan toepassen maar je vindt het intypen van het commando irritant? Of wat als je bij vrijwilligerswerk 20x dezelfde softwarepakketten moet gaan installeren op laptops? Of als je (zoals ik had als postdoc) telkens grote files op dezelfde en reproduceerbare manieren moet verwerken? 
+
+Dan zijn de command prompt en shellscripts erg handig!
+
+
+== De Uitdaging 
+_Duur: 2 tot 4 uur om de basis te leren en uitproberen is waarschijnlijk genoeg, je kunt het later altijd weer oppakken als je een situatie ziet waarbij je denkt "zou dit ook met shellscripting kunnen?"_
+
+. Probeer een script te maken (op Windows: met naam f.bat) dat de Google formatter aanroept op een Java-file, dat je in plaats van iets als "java -jar /path/to/google-java-format-${GJF_VERSION?}-all-deps.jar <options> [filename]" alleen nog maar "f [filename]" hoeft in te typen.
+. Maak in Linux (bijvoorbeeld in WSL) een shell script dat een tekstfile inleest, en een kopie maakt waar alle regels zijn omgedraaid (onderste regel boven). Kijk of het ook lukt met utilities (bv sed) om alle woorden waar een 'e' inzit te verwijderen.
+. Probeer eens een script/ikoontje te maken waarmee je in 1x IntelliJ, Visual Studio code, Postman en pgAdmin opstart :)
+. Kijk of je in de Command Prompt (of Powershell) je eigen afkortingen kan maken (bv "l" om alle files te listen met de meest recente onderaan, of 'p' om je nu favoriete bashscript op te starten). In linux/bash kan dat zeker, maar het zou denk ik ook mogelijk moeten zijn in Windows.
+. Kijk voor inspiratie en verdere opdrachten eens door de 'als je meer wilt weten'-sectie. 
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+. https://www.tutorialspoint.com/batch_script/index.htm
+. https://www.shellscript.sh/ 
+. https://medium.com/@sujith.adr/simple-but-cool-shell-script-projects-for-practice-580f16da1eee
+. https://www.youtube.com/watch?v=Kd1Nxzoce3Y
+. https://www.youtube.com/watch?v=sv6U1rDI3rw 

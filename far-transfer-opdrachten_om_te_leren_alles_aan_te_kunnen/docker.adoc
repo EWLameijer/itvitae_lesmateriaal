@@ -1,0 +1,21 @@
+= Docker
+Wubbo Lameijer, 20240514
+v 1.0.0
+
+== Inleiding
+
+Docker is niet meer weg te denken uit de IT. Een goede beheersing van Docker (met eventueel het DCA) maakt je voor veel werkgevers extra aantrekkelijk, en is ook een opening naar een indrukwekkend goed betaalde carriere in DevOps. Maar zelfs programmeurs zijn enthousiast over Docker.
+
+
+== De Uitdaging 
+_Duur: kan makkelijk 1 dag duren, mogelijk iets minder met de hulp van de aantekeningen van Peter en Thomas_
+
+Van je tussen- of eindproject: maak docker-containers van je database, en van je backend. Deploy het (samen met je frontend) via Render. Als het lukt: gefeliciteerd, je hebt iets moois om te laten zien bij sollicitaties, en kan het ook doen voor toekomstige portfolio-projecten!
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+. https://docs.docker.com/get-started/ 
+. DCA (hier heeft Wubbo ook een boek van...; maar er zijn vermoedelijk zat dingen op Youtube en Udemy)
+

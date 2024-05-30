@@ -1,0 +1,51 @@
+= Reactive Spring: WebFlux en Netty
+Wubbo Lameijer, 20240521
+v1.0.0
+
+== Inleiding: waarom Reactive Spring?
+
+Je kunt met Spring Web uitstekend backends maken, maar als je applicatie succesvol wordt, kunnen de requests je server overweldigen.
+
+"Wel", denk je misschien. "Geen probleem! VM erbij huren bij AWS, en probleem opgelost!" Dat _kan_ natuurlijk (AWS zal geen bezwaar maken), maar bij sommige grote applicaties kan het de moeite waard zijn om geld voor VMs in te ruilen voor geld voor developers; want traditionele webservers als Tomcat zijn niet zo efficiënt als ze kunnen zijn.
+
+Dat komt omdat een normale Spring-app werkt door 'threads' op te vragen aan het besturingssysteem. De relatie tussen een besturingssysteem en de programma's die erop draaien lijkt heel erg op de relatie van een restaurant met klanten. 
+
+Een restaurant heeft slechts een beperkte hoeveelheid personeel (laat ik obers als voorbeeld nemen). Laten we een klassieke, non-multicore processor vergelijken met een restaurant met een enkele ober. De CPU is de ober, en de manager (het operating system) laat hem alle tafels langsgaan om te kijken of mensen een menukaart nodig hebben, iets willen drinken, al iets gekozen hebben om te eten, enzovoorts. Dus terwijl er maar één ober is heeft elke klant regelmatig contactmomenten met de ober, en krijgt iedereen uiteindelijk zijn of haar eten.
+
+Schaal dit proces nu op naar een computer, waarbij de obers (processoren) razendsnel zijn en elke paar milliseconden van taak(klant) kunnen wisselen. Dan kan het lijken of alle klanten(programma's) tegelijkertijd worden bediend ('draaien'), terwijl ze in werkelijkheid in een soort roulatiesysteem aan de beurt zijn. Een moderne multicore processor is alleen anders dan oude processoren omdat je 'meerdere obers tegelijkertijd hebt rondlopen', waardoor je meer klanten tegelijkertijd kunt bedienen zonder zichtbare vertraging.
+
+Nu is een operating systeem (net als sommige managers) een micromanager, en besluit dus welke klant klant een tijdsslot in de roulatie krijgt. Dat tijdslot moet ook worden aangevraagd door een programma, en die aanvraag kan ook worden geweigerd; een tijdsslot kost tijd en geheugen, dus een operating system maakt er slechts een relatief beperkte hoeveelheid van (tegenwoordig in de orde van duizenden). Een telkens terugkerend tijdsslot 'processor-aandacht' (denk aan bijvoorbeeld een wekelijks uurtje privé-tennisles op donderdagmiddag 16:00 tot 17:00) wordt in computertermen een 'thread' genoemd. Alles wat op een computer wil runnen moet daarvoor een 'thread' krijgen van het besturingssysteem.
+
+Als je kijkt naar Tomcat: Tomcat is een traditionele webserver. Voor elke call die een gebruiker maakt wordt een aparte thread aangevraagd, die de Java-code die bij het request hoort uitvoert, de call naar de databaseserver maakt voor de benodigde gegevens (en wacht tot de databaseserver, die andere threads gebruikt, een antwoord teruggeeft) en tenslotte het antwoord via andere Java-code weer aan de webserver aflevert.
+
+Zoals je mogelijk ziet is hier tenminste één bron van inefficiëntie: de thread moet wachten tot de database iets teruggeeft. Een beetje als een ober die een bestelling opneemt, die aan de kok meldt, en vervolgens bij de keuken wacht tot de bestelling klaar is. Een beetje restaurantmanager zou zeggen dat die ober terug moet gaan om de bestellingen van _andere_ klanten op te nemen. Maar dat is lastiger als je webservers programmeert, elke thread heeft namelijk bepaalde informatie bewaard, die zou moeten worden weggegooid (of ergens anders moet worden opgeslagen) als hij achter een ander webrequest aangaat.
+
+Maar zo'n webserver schrijven is ook niet onmogelijk, je moet alleen slimme manieren vinden om de informatie van 1 thread ergens te bewaren en, samen met de response, aan een andere toevallig beschikbare thread door te geven.
+
+Netty is een webserver die dat kan! Maar het probleem is lastig genoeg dat je code voor Netty niet 'gewoon' met Spring Web en JPA kan programmeren, als programmeur moet je speciale code schrijven om Netty te helpen. Dat doe je met 'reactief programmeren', met Fluxen en Mono's. Dat wil niet zeggen dat Fluxen en Monos de enige manier zijn om efficiënt met threads om te gaan; C# heeft bijvoorbeeld async en await. Al denk ik zelf dat dat op zijn zachtst gezegd ook geen perfecte oplossing is, gezien alle bugs die onze deelnemers daarmee kregen en alle handleidingen over async/await die in de C#-nieuwsbrieven worden rondgestuurd.
+
+Hoe dan ook, het is denk ik goed als je als Java-developer bekend raakt met Netty en Webflux, om verschillende redenen:
+
+. Het is een interessante introductie in een andere manier van asynchroon programmeren dan je hebt in bijvoorbeeld JavaScript (dat met callbacks, promises, en/of dus async-await werkt)
+. sowieso bestaan er volgens mij geen developers die multithreaded programmeren 'te goed' begrijpen.
+. Spring WebFlux is een framework dat in opkomst lijkt, het kan best zijn dat je in je volgende baan ermee gaat werken (zie https://trends.stackoverflow.co/?tags=spring-webflux,spring-mvc).
+. Het kan ook zijn dat kennis van WebFlux ervoor kan zorgen dat je extra waarde biedt aan je werkgever als die hoge serverbelasting heeft en jij een goedkopere oplossing kan bieden dan extra machines te kopen/huren :)
+. Reactief programmeren is anders en uitdagend en denk ik heel goed om je creativiteit en veelzijdigheid als developer te vergroten. 
+. De energiebesparing door WebFlux is bovendien ook nog groen en milieubewust!
+
+== De Uitdaging 
+_Duur: kan makkelijk 1 tot 2 dagen duren, afhankelijk van hoe ver je gaat_
+
+Maak een eenvoudig projectje (bv todolist, receptenapp, of wat dan ook), maar gebruik daar dus Spring Reactive voor, met Netty en R2DBC.
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+- https://www.reddit.com/r/java/comments/1adqcra/do_people_still_use_spring_webflux/
+- https://spring.io/blog/2018/12/07/reactive-programming-and-relational-databases 
+- https://docs.spring.io/spring-framework/reference/web/webflux.html
+- https://spring.io/guides/gs/reactive-rest-service
+- https://www.brendangregg.com/Slides/RxNetty_vs_Tomcat_April2015/
+
+(voor de rest 'have fun storming the internet' ;)

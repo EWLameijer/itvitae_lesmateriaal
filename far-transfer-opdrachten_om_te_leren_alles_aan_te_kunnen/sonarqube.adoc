@@ -1,0 +1,31 @@
+= SonarQube
+Wubbo Lameijer, 20240515
+v1.0.0
+
+== Inleiding: waarom SonarQube
+De Java-compiler is best goed ontworpen, maar detecteert niet alle bugs en denkfouten die je kan maken. 
+IntelliJ is mogelijk de beste IDE ter wereld, maar detecteert ook niet alle bugs en denkfouten die je kan maken. 
+Visual Studio code is veelzijdig, maar detecteert ook lang niet alle bugs en denkfouten die je kan maken.
+En je groepsgenoten en collega's weten hopelijk veel en hebben hopelijk hun koffie op als ze je code reviewen, maar zij zullen ook niet alles zien...
+En hackers en rechtszaken van klanten liggen op de loer om elke fout die je maakt genadeloos af te straffen...
+
+Is er iets dat je als developer kan doen om de kans op (dure) fouten te vermijden te verkleinen zonder dat je dure experts hoeft in te huren naast het default complement van pen-testers? Ja, dat is er.
+
+Er bestaat namelijk software die je code kan bekijken. Traditioneel heten die linters (zie https://en.wikipedia.org/wiki/Lint_(software)) Tegenwoordig gebruik je in het bedrijfsleven erg vaak een statisch code-analyse-tool, en de weinige bedrijven die het niet gebruiken (IntelliMagic gebruikte het niet toen ik er kwam) zijn doorgaans bedrijven waarvan developers nog nooit van statische code-analyse-tools hebben gehoord, en die het snel gaan introduceren zodra iemand weet dat ze bestaan (het bleek ook mijn meest enthousiast geimplementeerde idee bijdrage bij IntelliMagic, ik wist namelijk dat die tools bestonden omdat ik erover gelezen had in 'Code Complete' en ze had toegepast voor mijn werk als postdoc).
+
+Een van de populairste analysetools is SonarQube. En dat kan je gratis uitproberen op je project.
+
+
+== De Uitdaging 
+
+Ga naar de SonarQube website, en krijg SonarQube werkend op je eindproject. Besteed ook 1 of 2 uur om geflagte problemen te bestuderen en (eventueel na overleg met je groepsgenoten) op te lossen.
+
+_Duur: 2 tot 4 uur_
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+. https://en.wikipedia.org/wiki/Lint_(software)
+. https://thectoclub.com/tools/best-code-analysis-tools/
+. Code Complete 2 (ook op internet) - heeft rond p710 ook vermeldingen van tools.

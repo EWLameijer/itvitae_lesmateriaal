@@ -1,0 +1,131 @@
+= Kotlin - "Java: The Next Generation"
+Wubbo Lameijer, 20240521
+v1.0.0
+
+== Inleiding: waarom Kotlin?
+
+Programmeertalen zijn niet als auto's of computers. Een nieuwe auto koop je ongeveer elke 10 of 20 jaar, en als het goed is zijn er in de tussentijd wel verbeteringen aangebracht - een Volvo ziet er heel anders uit dan een model-T-ford (en heeft meestal ook _instelbare_ airco). Automakers profiteren vaak van technische ontwikkelingen en leren van de successen (en mislukkingen) van de afgelopen jaren.
+
+Bij programmeertalen is de evolutie echter iets minder soepel - want als code van 10 jaar geleden niet meer werkt gaan bedrijven jouw programmeertaal niet meer gebruiken en zullen ze geen programmeurs betalen om er code in te schrijven. Programmeertalen hebben dus de neiging om alle oude dingen geldig te houden, maar dus ook slechte ideeën uit het verleden te behouden (weggooien zou oude code slopen), en nieuwe ideeën er op vaak rare manieren in te stoppen (omdat anders oude code ook breekt), of ervoor te zorgen dat zowel de oude als de nieuwe manieren werken, waardoor code door een mix van stijlen tamelijk verwarrend en lastig leesbaar wordt. Zo heeft C# voor het laatste element in een lijst de list[^1]. Waarom ^? Omdat dat een van de weinige karakters was die nog over was, en een beetje op de '-' van Python lijkt. De '-'  zou waarschijnlijk niet werken omdat oude dan code zou breken. Maar de ^ werkt niet op andere plaatsen waar dat logisch zou zijn, wat je ook weer moet leren als C#-developer. Kortom: oude talen veranderen wel, maar 
+
+1) de manieren om iets nieuws te doen zijn zelden erg logisch, consistent, compact/ergonomisch, of zelfs robuust (C# heeft bijvoorbeeld sinds 2023 zogenaamde 'primary constructors' (denk aan wat Java heeft met hoe je records maakt, maar ook veranderbare variabelen toestaand), maar die hebben -mogelijk wegens backwards compatibiliteit- zwakke punten waardoor makkelijk lastige bugs kunnen ontstaan - in tegenstelling tot wat je ziet bij programmeertalen die ontworpen zijn met primary constructors en waar primary constructors wèl robuust en veilig zijn.
+
+2) code gaat chaotisch ogen omdat developers andere stijlen gebruiken afhankelijk van wat ze geleerd hebben en wanneer ze gestopt zijn met nieuwe dingen leren over de programmeertaal - er ontstaat te makkelijk ruzie/verwarring of discussie welke van de 2 (of 3, of 4, of 5 of 9) bestaande manieren je als team moet gebruiken om de code voor iedereen prettig leesbaar te houden. En die afspraken kunnen dus ook anders zijn als je naar een ander team overstapt! Een extreem voorbeeld hiervan is {cpp}, dat zoveel features heeft dat ieder {cpp}-team een andere subset van de taal gebruikt en je als programmeur dus significante leertijd hebt op het 'accent' van je nieuwe groep aan te leren... Bovendien is er nooit genoeg tijd om oude code te herschrijven, zodat je codebase sowieso onvermijdelijk een mix van stijlen wordt met de daarbij behorende leesbaarheidsuitdagingen.
+
+3) oude lastige, foutgevoelige constructies en slecht gebleken ideeën blijven in de taal, wegens de backwards compatibiliteit. Maar ze blijven uiteraard wel overbodige bugs veroorzaken...
+
+Nu kan je je mogelijk voorstellen dat niet alle developers blij zijn met dit 'agglutinatieproces'. En developers, eigenwijs als ze zijn, gaan dan vaak een nieuwe, betere taal ontwikkelen. Die het echter zelden redt omdat er nog te weinig bibliotheken voor zijn en heel veel programmeurs bovendien geen zin hebben om een nieuwe taal te leren...
+
+Maar soms weet een nieuwe taal toch door te breken, door een belangrijk voordeel (al wil dat niet automatisch zeggen dat de nieuwe taal 'beter' is dan de talen ervoor; al is de vuistregel voor de meeste nieuwere talen dat ze soms wel enige lering lijken te trekken van de ervaringen met de programmeertalen daarvoor - al hangt dat erg af van de programmeerervaring van de maker(s) van de nieuwe taal)
+
+Dat tweede proces gaf dus ook aanleiding tot de reeks:
+
+- C was een heel goede programmeertaal toegespitst op de situatie (trage processoren, miniem geheugen) in het begin van de jaren 70. 
+
+- {cpp} brak op een gegeven moment door, omdat computers meer geheugen kregen en veel grotere programma's moesten kunnen draaien; de klassen van {cpp} hielpen enorm met het maken van grotere programma's met minder bugs. Die klassen 'stal' C++ als goed idee van Smalltalk en Simula. Ook introduceerde {cpp} een aantal andere goede ideeen, zoals booleans en strings (die C niet had!)
+ 
+- Java brak vooral door omdat het de eerste taal was die het makkelijk maakte interactieve applicaties te maken voor het internet. Ook loste Java een aantal problemen van {cpp} op, vooral de fouten die je kreeg omdat je vergat ruimte te reserveren voor variabelen of de ruimte te vroeg opruimde; en dat {cpp} op iedere computer anders runde. Ook problemen met de C-logica (if werkte met elke waarde, dus de fout in if (sky="green") werd niet opgemerkt, waardoor veel C-programmeurs aan "Yoda-programmeren" gingen doen: if ("green"=sky) ...
+
+(Vergeet ik nu niet een paar belangrijke talen? JavaScript brak door omdat Java als 'volledige programmeertaal' na enthousiasme in het begin te gevaarlijk werd geacht om zomaar te downloaden van het internet en uit te voeren op je computer-een kwaadaardig Java-programma zou je harde schijf kunnen reformatteren of data kunnen stelen; Python brak door omdat het de niche overnam van BASIC (Python leek in de beginjaren heel veel op moderne versies van BASIC, zoals TurboBasic, maar had niet de toxische associatie dat het een programmeertaal voor beginners was) en aan de systeembeheerkant van de veel lastiger te lezen en debuggen Perl. In het geval van JavaScript en Python kun je dus niet zeggen dat het duidelijke verbeteringen waren op de 'hoofdbranch' van C, C++ en Java; Python was in feite een vernieuwde BASIC, zij het er een die zich specialiseerde in scripts/korte programma's door veiligheidsmechanismen in te ruilen voor compactheid (en ten opzichte van Perl, als Van Rossem dat kende, compactheid in te ruilen voor leesbaarheid), JavaScript was als de eerste browsertaal de eerste in zijn categorie)
+
+Maar komt er iets ná Java? Je zou kunnen argumenteren dat C# na Java kwam en een aantal features toevoegde die Java eerst niet had (zoals generics) en soms nog steeds niet heeft (zoals collecties van primitieven). Aan de andere kant lijkt C# ook een aantal domme dingen te doen die 'in de tijd van Java' al zeer ouderwets waren, zoals ongeveer alles met een hoofdletter beginnen-wat verwarrring en bugs kan veroorzaken, namespaces aangeven met {}, en vermomde getallen gebruiken als enums, wat ook voor onnodige fouten zorgt. En veel 'nieuwe' ideeën van C# waren oftewel zeer twijfelachtige keuzes (bijvoorbeeld door de rekenlogica met nullables te kopiëren van SQL) oftewel zwakke of foutgevoelige implementatie van features die in andere talen veel beter werkten (zoals nullables of primary constructors)
+
+Nu is de concurrentie tussen Java en C# vruchtbaar geweest voor het introduceren van allerlei nieuwe ideeën in beide talen. Maar het kan zeker interessant zjin te vragen: als je een programmeertaal voor algemeen gebruik op grotere projecten zou maken in 2024, hoe zou die er dan uitzien? 
+
+Dat weet ik helaas niet, maar op basis van de ervaring met C#, Java en andere programmeertalen heeft het bedrijf JetBrains (de makers van IntelliJ) rond 2011 een programmeertaal bedacht die compatibel was met hun bestaande Java-codebase, maar zoveel mogelijk lessen gebruikte die ze geleerd hadden bij het maken van intelligente IDEs voor programmeertalen zo divers als Java en C#, Ruby en Python, PHP en JavaScript, C en C++, Rust en Go (sommige editors kwamen uiteraard later, maar er was veel programmeertaalervaring in JetBrains). Want JetBrains was gefrustreerd met hoe traag Java in die tijd evolueerde versus C#, en hun team wilde een betere tool om hun eigen programmeerproblemen op te lossen. Het werd "Kotlin" genoemd, naar een eiland in Rusland, en net zoals C++ een opvolger was van C (en C van B), zo was Kotlin bedoeld als een opvolger van Java.
+
+Kotlin is een beetje als een jongetje dat zich altijd afvraagt: waarom doen we het zo? (en antwoorden als 'omdat C het zo deed' niet goed genoeg vindt).
+
+Voorbeelden:
+
+- Jongetje: Waarom moet er een ';' staan aan het eind van elke regel?
+- Oude programmeur: C doet het zo, vroeger waren compilers erg traag en werkten niet snel genoeg als de programmeur niet meehielp.
+- Jongetje: en waarom hebben we nu veertig jaar later nog steeds ';' aan het eind van elke regel? 
+- Oude programmeur: Ehm...
+  
+//-  
+'''
+//- 
+  
+- Jongetje: Waarom moet je om iets op het scherm laten zien zo moeilijk doen als System.out.println()?
+- Oude programmeur: Wel, de developers van Java vonden het belangrijk dat je object-georienteerd programmeert, dus elke methode moet in een object zitten.
+- Jongetje: en heeft het feit dat je "System.out.println()" moet schrijven ooit fouten voorkomen? Of zou println() onduidelijk zijn omdat programmeurs vaak een methode println() in hun eigen klasse willen maken?
+- Oude programmeur: Ik denk het niet...
+- Jongetje: waarom gebruiken we dat dan nog steeds?
+- Oude programmeur: Ehm...
+
+//-  
+'''
+//- 
+  
+- Jongetje: waarom moet ik altijd checken of een String die ik binnenkrijg niet null is?
+- Oude programmeur: omdat null een geldige waarde is voor een String. Het werd door Hoare ook zijn "billion dollar mistake" genoemd, die ontelbare bugs, crashes en algemene ellende in de wereld heeft veroorzaakt.
+- Jongetje: waarom maken we dan geen String die niet null kan zijn, en geven we niet aan dat als een String null kan zijn, het met een notatie als String?, en dat de compiler weigert iets als str.length() te compileren als je niet eerst checkt of str null is?
+- Oude programmeur: Ehm...
+  
+'''  
+  
+Ik zou nog heel veel andere voorbeelden kunnen geven waardoor Kotlin je code korter en eenvoudiger maakt en bugs voorkomt. Dat wil niet zeggen dat Kotlin een wondermiddel is (je kunt geen webserver schrijven met één enkele letter, je kunt nog steeds bugs produceren met Kotlin) maar:
+
+. de code wordt duidelijk korter (10-25%)
+. een aantal fouten (NullPointerExceptions, 'break' vergeten in een switch statement, de verkeerde grenzen gebruiken in een for-loop, if (a=true)-fouten, problemen met het niet vinden van een item in een collectie als je een int zoekt in een collectie van Long, het per abuis veranderen van de waarden van parameters) worden automatisch voorkomen!
+. een aantal dingen is versimpeld (geen int en Integer meer, alles is Int - over het algemeen zijn alle typen met hoofdletters en alle waarden (inclusief methoden) met kleine letters), if else werkt (ook) als ? :, dus geen ? :-operator meer nodig . geen .stream() meer nodig om ergens map of filter op toe te passen
+. een aantal dingen zijn van andere talen overgenomen of zelfs verbeterd (string interpolation, maar compacter dan in Ruby. Extension functies, maar makkelijker te gebruiken dan in C#; properties, maar weer compacter dan in C#)
+. modern programmeren (functioneel, met constanten en lambda's) is in Kotlin erg gemakkelijk!
+
+Dus waarom deze opgave je aan wil sporen tot een Kotlin-projectje:
+
+. Tenminste 1 afgestudeerde Java-deelnemer heeft nu een Kotlin-baan. Het kan je beroep worden!
+. Mocht je een Android-mobiel hebben: Kotlin is de 'preferred language' voor Android, dus het kan je helpen een mooie mobiele app voor eigen gebruik (of zelfs voor de Google Play Store) te maken.
+. Zelfs als je niet in Kotlin gaat werken bij een werkgever is Kotlin een bijna ideale 'middentaal'/default taal voor je eigen projecten; je kunt er alles mee wat je in Java kan (omdat het alle Java-bibliotheken kan gebruiken), maar je maakt er (nog) minder makkelijk fouten in dan in Java, en het is ongeveer even compact als (soms zelfs compacter dan) Python, en je hebt per feature minder denktijd/puzzeltijd nodig dan bij Rust. Als je in relatief weinig tijd relatief veel features wilt opleveren is (tenzij er toevallig al Python-bibliotheken voor al die features bestaan) Kotlin anno 2024 mogelijk de beste keus die er is.
+. Als je Kotlin gebruikt leer je de meeste features van moderne programmeertalen kennen (niet allemaal natuurlijk, zelfs Kotlin is niet perfect, Kotlin's pattern matching loopt bijvoorbeeld achter op C# of Erlang). En dat blijkt erg handig te zijn als je ooit projecten in andere talen doet. Zo heb ik ooit bij een Python-project een teamlid geholpen omdat hij tekst moest genereren (denk "Succes: " + number + " item(s) created" -en complexer! In Kotlin weet je hoe je dat oplost (met "Succes: $number item(s) created"), en weet je hoe dat heet (string interpolation). Ik zocht toen 'string interpolation Python' op, en mijn collega was ontzettend blij dat ik hem leerde dat je in Python in plaats van "Succes: " + number + " item(s) created" tegenwoordig ook f"Succes: {number} item(s) created" kan gebruiken. Verwant is dat je sneller nieuwe features van andere talen leert gebruiken (zoals extension methods en primary constructor en nullable types in C#) omdat je ze toch al van Kotlin kent.
+. Functioneel programmeren (met map, filter en constanten) lijkt de manier te zijn waarop programmeren zich deze jaren ontwikkelt. En als je dat wilt oefenen is Kotlin ideaal: JavaScript geeft zelden duidelijke foutmeldingen, en bij Java is het een stuk moeilijker ermee te oefenen omdat je met allerlei zijdelingse dingen moet bezighouden als dingen omzetten naar streams, of Collectors moet gebruiken, of primitieven expliciet moet omzetten in objecten. Als ik in Java op een functionele manier een string wil maken met de gesorteerde karakters van een invoertekst, moet ik in mijn geval Stack Overflow raadplegen (https://stackoverflow.com/questions/28280721/java-8-streams-intstream-to-string) en dan iets doen als 
+``` 
+String sorted = "Hello world!".chars().sorted().collect(StringBuilder::new,(sb, i) -> sb.append((char)i),StringBuilder::append).toString();
+System.out.println(sorted);
+```
+Bij Kotlin hoef ik voor zo'n geval geen Stack Overflow te raadplegen (zelfs al moest ik even puzzelen waarom 'sorted' niet op String kan; Kotlin is zeker niet perfect, het is hoogstens (meestal) beter...):
+```
+val sorted = "Hello world!".toList().sorted().joinToString("");
+println(sorted)
+```
+Je kunt je mogelijk voorstellen dat met een taal als Kotlin het leren functioneel te programmeren veel sneller en makkelijker gaat, als je het in Java gaat doen heb je een flink deel van het leerwerk al achter de rug, en op een efficiëntere (en leukere) manier ook!
+
+[start=6]
+. Voor de lange termijn is het denk ik goed om als programmeur het motto te hebben 'be the change you want to see'. Het is heel verleidelijk voor programmeurs (en bedrijven) om vast te houden aan wat ze al kennen wegens de kosten iets nieuws te leren of iets om te zetten. Zo moest een andere groep bij een bedrijf waar ik werkte een XML-converter onderhouden - die in Excel was geschreven! Excel gebruiken voor een XML-converter was misschien ooit een goed idee geweest toen het simpel was, maar het ding werd steeds complexer, en Excel is geen ideale programmeertaal voor grote projecten. Computers en compilers nu kunnen meer dan ze konden in 1970 (en zelfs meer dan ze konden in 1995) en we hebben als programmeurs wel lessen geleerd; het argument op een Java-conferentie tegen Kotlin 'dat puntkomma's niet zo erg zijn' klinkt wel leuk, maar nullpointerexcepties, bugs door verkeerde indices in for-loops, en tijd besteed op Stack overflow om uit te zoeken hoe je een array van karakters weer omzet in een String zijn kosten voor de dingen die mensen in 1995 nog niet bedacht hadden. Als we altijd zouden vasthouden aan programmeertalen die we al kennen zitten we over 100 jaar nog steeds met onnodig lange ontwikkeltijd. Moderne programmeertalen leren en gebruiken moedigt anderen aan hetzelfde te doen (en versterkt het aantal antwoorden op Stack Overflow), zodat ons werk over 10 jaar ook beter en makkelijker wordt, wat er ook gebeurt (Java en C# zijn nu ook features van Kotlin aan het toevoegen). Het zou best kunnen dat er over 5 of 10 of 15 jaar een nieuwe programmeertaal komt die van de fouten van Kotlin heeft geleerd, maar dat is ook zoals het zou moeten zijn: een bijdrage eraan leveren dat onze opvolgers (en wij later) echte problemen sneller, gemakkelijker en met minder fouten oplossen doordat we talenbouwers stimuleren betere tools te maken in plaats van te zeggen 'goed genoeg, want ik heb geen zin iets nieuws te leren'-dat vind ik ook een goed doel!
+. Oh ja: zeker een kwestie van smaak, maar sommige mensen vinden programmeren in Kotlin ook (extra) leuk. Steve Yegge (misschien het meest bekend door zijn 'Good Agile, Bad Agile'-stuk genoemd in 'Coders at Work') schreef ooit in een review over Kotlin (https://steve-yegge.blogspot.com/2017/05/why-kotlin-is-better-than-whatever-dumb.html) dingen als "Everything you write in it feels like you made something cool." en concludeert met 
+
+____
+"Anyhoo, you get the idea.  I'm packed up and moving into a new neighborhood called Kotlin.  I've raved about other languages plenty of times before, but never once, not ever, did I rewrite any of my precious Java game server code in any of them.  But here I am, busily rewriting everything in Kotlin as fast as I can.
+
+I know a few other programmers who've also full-on converted to Kotlin. Most of them beat me to it by at least a year or two.  We buzz about it sometimes.  "Kotlin makes programming fun again," we tell each other.  The funny thing is, we hadn't fully grasped that programming had become non-fun until we tried Kotlin.  It takes you back to when you were first learning programming and everything seemed achievable."
+____
+
+Uiteraard is er geen garantie dat jij Kotlin ook leuk vindt (misschien dat C#, of Haskell, of Java meer jouw ding blijkt te zijn). Maar wie weet - misschien vind jij het ook leuk? Mogelijk sowieso de moeite om te proberen?
+
+
+== De Uitdaging 
+_Duur: een verkenning van Kotlin kan wel in een halve dag tot een dag_
+
+Kotlin heeft als nieuwere taal minder leermaterialen dan Java beschikbaar. Maar een paar dingen die je kan doen:
+
+. maak een paar opgaven van CodeWars of Advent of Code (bijvoorbeeld in Java), en maak dan in hetzelfde Java-project met InteliJ een kotlin-file (.kt). Copy-paste je Java-code daarin - IntelliJ biedt aan het te converteren. Ga op het aanbod in, en kijk wat de verschillen zijn. Probeer dan zelf een paar nieuwe opgaven te doen in Kotlin.
+
+. De Kotlin-tour van JetBrains lijkt ook wel okee. https://kotlinlang.org/docs/getting-started.html .
+
+. Een andere manier is om een Kotlin-cursus te doen via JetBrains, zie https://www.jetbrains.com/edu-products/download/#section=idea-Kotlin.  Als je in IntelliJ je huidige project closet, kom je op een Welcome Screen, waar je Learning kan aanzetten - en een cursus als "Atomic Kotlin" kan doen. 
+ 
+Tenslotte heeft Ali Meshkat van de Rabobank ook een Kotlin-cursus gemaakt, hoe je een Spring-applicatie omzet in Kotlin. https://github.com/alimeshkat/hack-to-kotlin 
+
+Ideaal kun je na een half dagje Kotlin de backend van een eenvoudige Spring-app (bv een recipe of todolist-app) in Kotlin maken, en een paar opdrachten van Advent of Code of CodeWars 'gewoon' (in elk geval met hulp van je IDE) in Kotlin oplossen. Of je daarna met Kotlin doorgaat tot het punt dat je er enigszins 'vloeiend' in wordt is jouw keuze, maar je hebt er dan in elk geval kennis mee gemaakt!
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+- https://www.techtarget.com/whatis/definition/Kotlin
+- https://dev.to/martinhaeusler/kotlin---the-good-the-bad-and-the-ugly-3jfo
+- https://github.com/alimeshkat/hack-to-kotlin 
+- https://www.reddit.com/r/Kotlin/comments/14bpuym/should_i_choose_kotlin_over_java_for_a_new/
+- https://kotlinlang.org/docs/getting-started.html 
+- https://steve-yegge.blogspot.com/2017/05/why-kotlin-is-better-than-whatever-dumb.html

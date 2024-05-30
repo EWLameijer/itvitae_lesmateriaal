@@ -261,6 +261,7 @@ werkt gewoon. page en size krijgen default waarden als je ze niet invult (page=0
 . code netjes formatteren: Alt+Shift+F òf format on save aanzetten (Ctrl+, voor settings, zoek op "format")
 . een lange naam/identifier intypen: type een paar letters in (zoals 'ing' of 'igts') en druk dan op Tab.
 . op meerdere regels een cursor neerzetten: Alt + linkermuisknop
+. de terminal openen (voor npm run dev): Ctrl + ` (backtick)
 
 == HTML 
 

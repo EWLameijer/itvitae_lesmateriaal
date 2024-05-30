@@ -1,0 +1,39 @@
+= OWASP en de OWASP Juice Shop
+Wubbo Lameijer, 20240522
+v1.0.0
+
+== Inleiding: waarom OWASP?
+
+Als programmeur, zeker als je begint als hobby-programmeur, denk je vooral aan het 'happy path': hoe zorg je ervoor dat een programma doet wat je wilt?
+
+Een uitdaging als je als beroep gaat programmeren is dat je veel meer aandacht moet gaan besteden aan de 'unhappy paths' die gaan gebeuren als 
+
+a) andere mensen je programma gaan gebruiken (en dus rare/onverwachte waarden kunnen invoeren)
+
+b) je programma beschikbaar komt over het internet, wat kwaadwillende mensen in staat stelt je programma te saboteren of informatie te stelen of te gijzelen.
+
+Dat tweede aspect, security, is een zeer complex onderwerp dat we in de opleiding niet voldoende uitgebreid konden behandelen zonder dat het leren van de basiskennis waarvoor werkgevers je aan zouden nemen (maken van backend en frontend) in gevaar zou komen. Want security is vaak toch vooral een kwestie voor senior-developers, security-specialisten, en pen-testers.
+
+Toch ben je, als je van ITvitae afkomt, op het pad om een senior developer te worden, dus security-kennis moet je sowieso wel langzamerhand gaan ontwikkelen. Ook omdat je, als je een feature maakt, sowieso rekening moet houden met security-aspecten. Zelfs al zullen collega's en statische code-analysetools als SonarLint je op security-leaks wijzen, je team zal wel verwachten dat je begrijpt of tenminste leert waar je per ongeluk lekken hebt geïntroduceerd, hoe je die kunt oplossen, en hoe je die had kunnen voorkomen.
+
+Gezien hoe belangrijk security is, zijn er organisaties die zich bezig houden om security in software te bevorderen. Één daarvan is de MVSP (https://mvsp.dev/), de Minimum Viable Secure Product. Maar de meest bekende is waarschijnlijk de OWASP top-10 (https://owasp.org/www-project-top-ten/).
+
+Betekent dat dat je als developer de hele OWASP-top-10 uit je hoofd moet kennen? Ik hoop het niet, want dat heb ik ook nooit gedaan. Maar je moet wel weten dat security belangrijk is, dat OWASP bestaat, en over de jaren heen leren wat CORS, CSRF, XSS en dergelijke betekenen, en wat de vulnerabilities gerapporteerd door tools als SonarLint betekenen, en hoe ze op te lossen.
+
+Maar om op speelse manier wat meer te leren over security (en de term OWASP te onthouden) zou ik iedereen aanraden de "OWASP juice shop"-oefening te doen. Deze is te vinden op https://owasp.org/www-project-juice-shop/  en https://juice-shop.herokuapp.com/#/ . 
+
+
+== De Uitdaging 
+_Duur: twee uur tot vier uur_
+
+Probeer zoveel mogelijk vulnerabilities te vinden in de juice shop. Zoek ook op internet en Wikipedia zoveel mogelijk op over security vulnerabilities zoals XSS en CSRF en SQL injection (dat zal je niet alleen helpen bij je toekomstige baan, maar ook bij de juice shop!). Dit zal uiteraard niet voldoende zijn om een security-expert van je te maken, maar je zal in elk geval wel meer gevoel krijgen voor het onderwerp. Uiteindelijk wil je misschien wel een paar keer per jaar een paar uur besteden aan het opfrissen van je security-kennis, tot de OWASP-juice-shop je makkelijk afgaat... Maar weten dat security bestaat en welke problemen er kunnen zijn is een belangrijke stap op de weg naar professioneel programmeursschap.   
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+- https://mvsp.dev/
+- https://owasp.org/www-project-top-ten/
+- https://www.jit.io/blog/the-in-depth-guide-to-owasps-top-10-vulnerabilities
+- https://en.wikipedia.org/wiki/Vulnerability_(computing)
+- https://xkcd.com/327/

@@ -1,0 +1,52 @@
+= Angular
+Wubbo Lameijer, 20240522
+v1.0.0
+
+== Inleiding: Waarom Angular?
+
+Java was de eerste 'koning van het internet': toen de Java-makers de eerste interactieve website - het met de muis roteren van een molecuulstructuur - demonstreerden, leidde dat tot een staande ovatie. Toch bleef Java niet dominant voor applicaties die in de browser van de gebruiker draaien (in de Java-wereld 'applets' genoemd). Immers, de meeste werknemers mogen geen software installeren op hun PC, dus ook geen JVM. Ten tweede was het mogelijk (erg moeilijk, maar wel mogelijk!) Java-applets te maken die vervelende dingen konden uithalen met het systeem van de gebruiker. Java was immers ontworpen als een volledige programmeertaal die alles kon - dus ook dingen die een gebruiker niet zou willen.
+
+Java's opvolger voor internet werd JavaScript, dat geschreven werd om in de browser te runnen en geen toegang te hebben tot het operating systeem. Als je een webbrowser installeerde, had je gelijk JavaScript, dus het installeren van extra software (zoals een JVM) was niet nodig. Ten tweede kon JavaScript onmogelijk rottige dingen uithalen op de computer, het zat vast in de browser in een soort 'sandbox'.
+
+JavaScript had echter een aantal zwakke punten. Dat het een programmeertaal was die door 1 persoon in paar dagen was bedacht en geïmplementeerd en nogal wat onfortuinlijke eigenschappen had (zoals een global state) was tot daar aan toe. En zelfs dat het moeilijk was code in delen op te bouwen (klassen had JavaScript niet echt) zodat je gemakkelijk een berg spaghetticode kreeg was kennelijk nog voldoende acceptabel. Maar... JavaScript draaide ontzettend traag. Het duurde tot 2008 tot Google kwam met een echt snelle engine, de V8. Eindelijk was JavaScript snel genoeg om meer te doen dan 'het laten blinken van een cursor'.
+
+Het was waarschijnlijk geen toeval dat in 2009 twee ingenieurs in een klein bedrijf het project AngularJS startten. Toen een van hen naar Google overging lanceerde Google in 2010 het 'nieuwe' Angular JS. Het had allerlei moderne dingen zoals werken met componenten (een soort klassen) en 'two-way-data binding', dat de developmenttijd van websites flink versnelde van wat er daarvoor was (JavaScript met de JQuery-bibliotheek).
+
+AngularJS groeide enorm, maar geïnspireerd door AngularJS (en mogelijk ook door de tekortkomingen ervan, de met AngularJS gemaakte websites waren relatief traag) kwamen er snel concurrenten. De beroemdste daarvan ken je waarschijnlijk al: React! React had een aantal innovaties, zoals een Virtuele DOM die zorgde voor snellere rendering, en ook JSX, voor het makkelijker creëren van de user interface. 
+
+Of het door React kwam of andere redenen had, Google begon al snel aan een rework van Angular. Één van mijn kennissen vertelde me dat hij lang geleden op een Angular-zomercursus was, en dat halverwege iets werd gezegd als: "Vergeet alles: Angular wordt helemaal omgegooid". Google had een nieuwe versie van Angular uitgebracht, die niet alleen geen JavaScript meer gebruikte (maar TypeScript), maar ook radicaal was veranderd. De nieuwe versie werd dan ook "Angular" genoemd, om het te onderscheiden van de oude AngularJS. 
+
+Zoals je op de grafieken van Stack Overflow kan zien https://trends.stackoverflow.co/?tags=angularjs,reactjs,vue.js,angular,next.js slaagde Angular erin om AngularJS bijna geheel irrelevant te maken (al zijn er nog steeds bedrijven die AngularJS gebruiken). Al wordt Angular zelf sinds 2019 overschaduwd door de groei van React, en de kans is groot dat 2024 het jaar zal zijn waarin ook het (React-achtige) NextJS Angular inhaalt.
+
+Maar Angular is zeker geen verloren zaak; veel grote bedrijven gebruiken Angular, en het lijkt onwaarschijnlijk dat ze daar binnenkort mee ophouden. En Stack-Overflow data zijn internationaal, en bevat ook de vragen van hobbyisten. Als je kijkt naar professionele developers gebruiken die ongeveer 2x zo vaak React als Angular, onder hobbyisten is dat ongeveer 5x zo vaak. (https://survey.stackoverflow.co/2023/#most-popular-technologies-webframe-prof ) Dus de kans dat je een Angular-baan krijgt zou wereldwijd 'slechts' ongeveer de helft zijn van de kans op een Reactbaan - en in Nederland mogelijk groter!
+
+Hoe dan ook, dit heeft relevante gevolgen voor je werkgelegenheid. Andry vertelde me dat er veel meer vacatures zijn voor Angular developers dan voor React-developers - als mensen massaal React leren omdat het mooier of hipper zou zijn, dan betekent dat dat bedrijven die Angular hebben en niet weg willen gooien moeilijker nieuwe Angular-developers kunnen vinden. Dus een kans voor iedereen die bereid is Angular te leren (en er liefst ook nog een portfolioproject in te maken)!
+
+Natuurlijk kan je je afvragen: is Angular dan bijzonder rottig of krakkemikkig, iets van 'er zijn veel meer vacatures voor middelbareschooldocenten dan voor televisiepresentatoren'? Het antwoord is waarschijnlijk 'nee'. Ik was zelf geen enorme fan van Angular toen ik het zelf gebruikte, in versie 6, zo'n 6 jaar geleden, React en Vue leken ergonomischer en compacter, maar in die tijd was ik noch een enorme frontend-fan nog erg bekend met TypeScript (of zelfs met JavaScript, dat overal door TypeScript heenkomt). Ik denk dat Angular wat minder compact is en minder makkelijk te leren dan React, maar tenminste 1 persoon die in beide een tamelijk hoog niveau heeft bereikt vond Angular in sommige opzichten superieur aan React, en het is bovendien de afgelopen 6 jaar/12 versies behoorlijk veranderd. Ikzelf beschouw Angular op dit moment een beetje als Python of Go: niet mijn favoriete taal om problemen mee op te lossen, maar niet zo vreselijk dat ik een verder interessant project zou weigeren omdat het toevallig Angular gebruikt. En misschien, als ik meer over JavaScript, TypeScript en Angular weet, dat het ook _mijn_ voorkeur zou krijgen boven React...
+
+Op zijn minst zou ik als voordelen van Angular zien:
+
+. Het is makkelijker aan een baan te komen als je Angular kent.
+. Mogelijk dat Angular voor bepaalde mensen een stuk makkelijker is dan React, dus als je moeite hebt met React: mogelijk past Angular beter bij je natuurlijke denkpatroon (interessant genoeg lijkt Angular met zijn Dependency Injection waarschijnlijk meer op Java met Spring dan React dat doet!)
+. Op zijn minst is programmeren in Angular een kennismaking met een heel andere filosofie dan React - waar je bij React allerlei extra bibliotheken moet kiezen om apps te maken (zoals ReactRouterDom voor routing en axios voor fetching) heeft Angular ongeveer alles ingebouwd wat je nodig hebt. En dat kan een goed idee zijn, gezien de stijgende populariteit van NextJS, die een soort React met ongeveer alles wat je nodig zou kunnen hebben is...
+. Ook kan het verfrissend zijn kennis te maken met andere programmeerstrategieën dan React heeft, Angular gebruikt bijvoorbeeld RxJs als programmeermodel, en ook verschillende databindings. Ik denk dat meer denkwijzen leren en oefenen alleen maar goed kan zijn voor een developer.
+. Angular lijkt (sterker dan React) continu aan het vernieuwen te zijn, het kan best zijn dat het tegenwoordig allerlei coole features heeft en een stuk inspirerender is dan de Angular van 6 jaar geleden. Op zijn minst zou het de moeite waard lijken te verkennen! Zeker omdat regels code, bundle size en performance van Angular vergelijkbaar of beter lijken dan van React (https://www.freecodecamp.org/news/a-real-world-comparison-of-front-end-frameworks-with-benchmarks-2018-update-e5760fb4a962). En Angular heeft zeker features zoals 'lazy loading' die React nog niet lijkt te hebben!
+
+== De Uitdaging 
+_Duur: rond 1 dag_
+
+Volg bijvoorbeeld een de tutorial op de nieuwe Angular-site: https://angular.dev/tutorials 
+
+Maak een Angular-variant van een paar eenvoudige apps; bijvoorbeeld een ToDo-list-app of een receptenapp of een supermarktapp. Nu is de kans groot dat dat allemaal moeizamer voelt omdat je nog geen routine hebt in Angular, maar ga na afloop vergelijken: wat vind je de goede (of slechte) punten van Angular versus React? Waar lijkt Angular een voordeel te hebben?
+
+Het kan nuttig zijn je volgende portfolioproject in Angular te maken, maar de keus is aan jou! 
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+- https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Introduction
+- https://angular.dev/tutorials
+- https://www.freecodecamp.org/news/a-real-world-comparison-of-front-end-frameworks-with-benchmarks-2018-update-e5760fb4a962
+- https://www.reddit.com/r/Angular2/comments/14kst9n/why_do_people_say_that_angular_is_more_complex/
+- https://www.reddit.com/r/Angular2/comments/12l0mhh/what_is_the_best_way_to_learn_angular_besides/

@@ -1,0 +1,29 @@
+= Een Webscraper maken 
+Wubbo Lameijer, 2024-05-18
+v1.0.0
+
+== Inleiding: waarom Webscrapen?
+Het internet heeft ongelofelijk veel informatie ter beschikking via APIs. Maar er is nog veel en veel meer beschikbaar als zichtbare (en soms onzichtbare) tekst. Het proces die te bemachtigen wordt ook wel 'webscraping' genoemd.
+
+Voor de duidelijkheid: Webscraping is niet per definitie illegaal; net zoals een persoon de inhoud van openbare sites mag lezen, mogen computerprogramma's dat ook doen. Je zou legaal in de problemen kunnen komen als je informatie van sites die geen bepaalde licenses hebben scraapt en openbaar maakt/verkoopt, en in een individueel geval zal een website je tijdelijk blokkeren (tijdens het C#-programma kregen de deelnemers de opdracht de verschillende telefoons van de Vodafone-website te scrapen - na een dagje hard werk van onze deelnemers had niemand in het Klooster nog toegang tot de Vodafone-site, in elk geval gedurende een paar dagen). Maar als je voor individueel gebruik de wiki van een computerspelletje scrapet, of (zoals ik zelf deed) je karakterdata ophaalt van de FFXIV-website om het gemiddelde van de levels van je karakter te berekenen, of zoals een andere deelnemer deed, automatisch de vacature-gedeeltes van websites van een aantal bedrijven te scrapen zodat hij op de hoogte werd gehouden van alle nieuwe vacatures daarvan - daar krijg je geen problemen mee, en het kan bovendien erg nuttig zijn te kunnen!
+
+== De Uitdaging 
+_Duur: scrapen kan je makkelijk voor elkaar krijgen in een half uurtje (mijn FFXIV-scraper in Kotlin), maar een halve dag besteden aan verschillende sites kan geen kwaad. En een dag ook niet._
+
+De opdracht: zoek een website met tekstdata die je interessant lijkt (of dat nou wikipedia is, https://www.d20srd.org/indexes/spells.htm, https://na.finalfantasyxiv.com/lodestone/character/, de wiki van een willekeurig spel, vacatures op Linkedin (bv via https://www.linkedin.com/jobs/java-developer-jobs/), of zelfs https://www.vodafone.nl/telefoon/alle-telefoons? ;) Zoek een site uit waar je informatie van wilt, en ga aan de slag!
+
+Soms is het makkelijk (als alles via HTML gaat) een site te scrapen, in andere gevallen moet je mogelijk een zogenaamde 'headless browser' gebruiken.
+
+Één deelnemer gebruikte Selenium voor webscrapen.
+
+Voor de rest kan je met ongeveer elke programmeertaal webscrapen. Python lijkt de populairste te zijn (mogelijk omdat Python sowieso de populairste optie lijkt voor kleine scripts), maar het kan ook in C# (zoals onze deelnemers demonstreerden), Java of Kotlin. Misschien wel leuk om een Java-Scraper met een Python-scraper te vergelijken...
+
+== Tijd/moeilijkheid (praktijk)
+?
+
+== Als je meer wilt weten
+. https://en.wikipedia.org/wiki/Web_scraping
+. https://www.geeksforgeeks.org/what-is-web-scraping-and-how-to-use-it/
+. https://www.youtube.com/watch?v=8dTpNajxaH0
+. https://www.lambdatest.com/blog/web-scraping-with-selenium-java/
+. https://www.scrapingbee.com/blog/selenium-python/ 
